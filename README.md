@@ -1,9 +1,9 @@
 # RotatoCAM — Free 4-Axis Rotary CAM & G-code Generator for DIY CNC
 
-**Turn an STL into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
+**Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.1.007-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.1.1337-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -16,11 +16,14 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 - **Free Community Edition** — grab the portable Windows zip from [**Releases**](../../releases) (unzip and run, no install, no admin rights), or from **https://jmscnc.com/rotatocam/**
 - **RotatoCAM Pro** — all strategies + conversational (no-CAD) programming: **https://jmscnc.com/rotatocam/**
 
+**New to rotary CAM?** A quick How-To (load → pick a strategy → Generate → Simulate → Export) lives at **https://jmscnc.com/rotatocam/#how-to** and in the app under **Help → Getting started**. Bundled example projects (fluted columns, a camshaft, engraving) open from **Help → Open example projects…**.
+
 ## What it does
 
-- **Simultaneous 4-axis rotary surfacing** — spiral finishing + radial roughing straight from an STL, around the C axis
+- **Simultaneous 4-axis rotary surfacing** — spiral finishing + radial roughing straight from an STL or STEP solid, around the C axis
 - **Wrapped rotary engraving** — system-font text or DXF/SVG wrapped onto a round bar with a real V-bit profile
 - **Flat 2D engraving** — multi-line text and drawings on a plane
+- **STL & STEP/STP import** — load meshes or CAD solids directly (solids are tessellated and scaled to mm)
 - **Verify before iron** — 3D backplot, a feed/units check, and a deviation-colored material-removal simulator with a machining-time estimate
 - **Posts:** grblHAL, GRBL (3018 / 3040), LinuxCNC · **mm / inch** output
 - **Portable** — Python and every dependency bundled; nothing to install
