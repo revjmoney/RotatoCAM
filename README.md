@@ -1,57 +1,49 @@
-# RotatoCAM — Affordable 4-Axis Rotary CAM for DIY CNC
+# RotatoCAM — Free 4-Axis Rotary CAM & G-code Generator for DIY CNC
 
-**Take a 3D model straight to G-code for a rotary (4th-axis) setup — without paying four figures for a CAM seat.**
+**Turn an STL into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
+A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey)
-[![Download](https://img.shields.io/badge/download-Releases-orange)](../../releases/latest)
+![Version](https://img.shields.io/badge/version-0.69.1.007-ffb000)
+![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
+![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
-RotatoCAM is a from-scratch **CAM / G-code generator** for DIY CNC machines with a table-mounted **rotary (4th / C) axis** — mini knee mills, 3018/3040 routers, anything running **grblHAL, GRBL, or LinuxCNC**. It does real **simultaneous 4-axis rotary roughing and finishing**, wrapped rotary engraving, and flat 2D engraving, with a built-in **backplot and material-removal simulation** so you verify before you cut.
+Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and finishing toolpaths, **wrapped rotary engraving**, and **flat 2D engraving** — with a 3D backplot and a material-removal simulation so you can verify the program before you ever cut.
 
-This is the **Community Edition — free software (GPLv3)**. A **Pro** edition ($49, no subscription, pay once per major version) adds the heavier strategies. **[Download + details → jmscnc.com/rotatocam](https://jmscnc.com/rotatocam)**
+> ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-📺 **Demo:** [Continuous 4-axis rotary spiral finishing](https://youtu.be/-dh9E5Rkhbc)
+## Download
 
-## Download & run
-Grab the latest **portable Windows build** from the **[Releases page](../../releases/latest)** (or from [jmscnc.com/rotatocam](https://jmscnc.com/rotatocam)). No install, no Python needed:
+- **Free Community Edition** — grab the portable Windows zip from [**Releases**](../../releases) (unzip and run, no install, no admin rights), or from **https://jmscnc.com/rotatocam/**
+- **RotatoCAM Pro** — all strategies + conversational (no-CAD) programming: **https://jmscnc.com/rotatocam/**
 
-1. Download the `RotatoCAM-…-Windows-portable.zip`
-2. Unzip it anywhere
-3. Run `RotatoCAM.exe`
+## What it does
 
-> Not code-signed, so Windows SmartScreen may say *"Windows protected your PC"* on first run — click **More info → Run anyway**.
+- **Simultaneous 4-axis rotary surfacing** — spiral finishing + radial roughing straight from an STL, around the C axis
+- **Wrapped rotary engraving** — system-font text or DXF/SVG wrapped onto a round bar with a real V-bit profile
+- **Flat 2D engraving** — multi-line text and drawings on a plane
+- **Verify before iron** — 3D backplot, a feed/units check, and a deviation-colored material-removal simulator with a machining-time estimate
+- **Posts:** grblHAL, GRBL (3018 / 3040), LinuxCNC · **mm / inch** output
+- **Portable** — Python and every dependency bundled; nothing to install
 
-## Why this exists
-$15k for simultaneous 4-axis in Fusion is a joke. DeskProto is clunky, Vectric is pricey and wood-first. I had a DIY 4th axis and no sane CAM for it — so I wrote one. It's not trying to be Mastercam; it's trying to get your part cut.
+## Editions
 
-## Features (Community Edition)
-- **Simultaneous 4-axis rotary** — roughing (radial) + finishing (spiral)
-- **Wrapped rotary engraving** — text/art around a cylinder
-- **Flat 2D engraving**
-- **Import:** STL · STEP/IGES · OBJ · 3MF · DXF · SVG
-- **Backplot + material-removal simulation**
-- **Posts:** grblHAL · GRBL · LinuxCNC
-- Runs forever — no license, no nag, no subscription
-
-## Community vs Pro
-| | Community (free) | Pro ($49) |
+| | Community Edition — Free | Pro — $49 |
 |---|---|---|
-| Rotary finishing | Spiral | + raster, axial/flow |
-| Rotary roughing | Radial | + helical |
-| Wrapped + flat engraving | ✅ | ✅ |
-| STEP / IGES import | ✅ | mesh only |
-| 3+1 indexed surfacing, pencil cleanup, V-carve | — | ✅ |
-| Conversational (no-CAD) suite, adaptive roughing | — | ✅ |
-| Laser / plasma 2D cutting | — | ✅ |
-| Backplot + simulation · grblHAL/GRBL/LinuxCNC | ✅ | ✅ |
+| **Price** | Free forever | Pay once per major version (no subscription) |
+| **Strategies** | 4-axis finish (spiral) · 4-axis rough (radial) · flat 2D engrave · wrap engrave | **Everything in CE**, plus raster + axial/flow finishing, helical roughing, 3+1 indexed surfacing, pencil cleanup, V-carve, the full conversational suite, adaptive roughing, and laser/plasma 2D cutting |
+| **Safety + setup workflow, backplot, simulation** | ✓ | ✓ |
 
-## ⚠️ Safety
-RotatoCAM only **writes** G-code — **it does not run your machine.** CNC mills, lasers, and plasma are dangerous. Always review the backplot, run the simulation, and **air-cut** every program before you cut. Provided **AS-IS, no warranty** — you are the operator and you are responsible.
+The free edition is genuinely useful on its own — take a rotary part from model to verified G-code. Pro unlocks the deep toolbox: **https://jmscnc.com/rotatocam/**
 
-## License & source
-RotatoCAM Community Edition is **free software under the GNU GPL v3**. You may use, study, share, and modify it under those terms.
+## Requirements
 
-**Corresponding source:** the source for each release is available on request — email **therealrevjmoney@gmail.com** and I'll send you the source for that build. (The Pro edition is a separate, proprietary product.)
+64-bit **Windows 10/11** · 4-core CPU · 8 GB RAM · a GPU with **OpenGL 3.2+** (integrated is fine) · ~2 GB disk.
+
+## License
+
+RotatoCAM Community Edition is **free to download and use** (closed-source freeware). The full terms are shown in the app under **Help → About** and ship with the download.
 
 ---
-*Built by [Rev. J. Money](https://jmscnc.com) / JMS CNC — because affordable 4-axis rotary CAM should exist.*
+
+Website · downloads · Pro: **https://jmscnc.com/rotatocam/** · Contact: **therealrevjmoney@gmail.com**
+Built in Myrtle Beach by Rev. J. Money.
