@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.1.1337-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -13,10 +13,10 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 ## Download
 
-- **Free Community Edition** — grab the portable Windows zip from [**Releases**](../../releases) (unzip and run, no install, no admin rights), or from **https://jmscnc.com/rotatocam/**
-- **RotatoCAM Pro** — all strategies + conversational (no-CAD) programming: **https://jmscnc.com/rotatocam/**
+- **Free Community Edition** — grab the portable Windows zip from [**Releases**](../../releases) (unzip and run, no install, no admin rights), or from **https://rotatocam.com/**
+- **RotatoCAM Pro** — all strategies + conversational (no-CAD) programming + a built-in 4-axis G-code viewer (RotatoVIEW): **https://rotatocam.com/**
 
-**New to rotary CAM?** A quick How-To (load → pick a strategy → Generate → Simulate → Export) lives at **https://jmscnc.com/rotatocam/#how-to** and in the app under **Help → Getting started**. Bundled example projects (fluted columns, a camshaft, engraving) open from **Help → Open example projects…**.
+**New to rotary CAM?** A quick How-To (load → pick a strategy → Generate → Simulate → Export) lives at **https://rotatocam.com/#how-to** and in the app under **Help → Getting started**. Bundled example projects (fluted columns, a camshaft, engraving) open from **Help → Open example projects…**.
 
 ## What it does
 
@@ -36,7 +36,7 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 | **Strategies** | 4-axis finish (spiral) · 4-axis rough (radial) · flat 2D engrave · wrap engrave | **Everything in CE**, plus raster + axial/flow finishing, helical roughing, 3+1 indexed surfacing, pencil cleanup, V-carve, the full conversational suite, adaptive roughing, and laser/plasma 2D cutting |
 | **Safety + setup workflow, backplot, simulation** | ✓ | ✓ |
 
-The free edition is genuinely useful on its own — take a rotary part from model to verified G-code. Pro unlocks the deep toolbox: **https://jmscnc.com/rotatocam/**
+The free edition is genuinely useful on its own — take a rotary part from model to verified G-code. Pro unlocks the deep toolbox: **https://rotatocam.com/**
 
 ## Requirements
 
@@ -48,5 +48,5 @@ RotatoCAM Community Edition is **free to download and use** (closed-source freew
 
 ---
 
-Website · downloads · Pro: **https://jmscnc.com/rotatocam/** · Contact: **therealrevjmoney@gmail.com**
+Website · downloads · Pro: **https://rotatocam.com/** · Contact: **therealrevjmoney@gmail.com**
 Built in Myrtle Beach by Rev. J. Money.
