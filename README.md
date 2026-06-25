@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.2-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
