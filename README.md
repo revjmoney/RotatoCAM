@@ -3,13 +3,20 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.2-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.3-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
 Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and finishing toolpaths, **wrapped rotary engraving**, and **flat 2D engraving** — with a 3D backplot and a material-removal simulation so you can verify the program before you ever cut.
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
+
+> 🛠️ **Fixed in 0.69.2.223.3 (2026-07-05):** the old **Simple mode** made the free rotary
+> strategies (**4-axis finish**, **4-axis rough**, **Rotary Simple**) fail with *"strategy
+> 'threeaxis_finish' is a Pro feature"* — it was silently swapping rotary jobs to a Pro-only 3-axis
+> strategy. **Simple mode has been removed**: the app is now single-mode with the full setup, no
+> hidden swaps, and all four free strategies generate. **Sorry if this bit you — your setup was
+> correct, the app was wrong.** Grab the latest zip below; bug reports welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
