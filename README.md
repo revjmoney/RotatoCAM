@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.3-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.4-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,12 +11,12 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🛠️ **Fixed in 0.69.2.223.3 (2026-07-05):** the old **Simple mode** made the free rotary
-> strategies (**4-axis finish**, **4-axis rough**, **Rotary Simple**) fail with *"strategy
-> 'threeaxis_finish' is a Pro feature"* — it was silently swapping rotary jobs to a Pro-only 3-axis
-> strategy. **Simple mode has been removed**: the app is now single-mode with the full setup, no
-> hidden swaps, and all four free strategies generate. **Sorry if this bit you — your setup was
-> correct, the app was wrong.** Grab the latest zip below; bug reports welcome at **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.4:** **custom post-processors** — drop a `.py` file in `~/.rotatocam/posts/`
+> (**Settings → Open custom posts folder…**) to add your own controller, no rebuild needed; it shows
+> up in the Controller dropdown as "&lt;name&gt; (custom)". The folder is seeded with a README and a
+> minimal example. Plus a built-in **MASSO** post (experimental). *(And from 0.69.2.223.3: the free
+> 4-axis strategies now generate in every case — a Simple-mode bug that mislabeled them "Pro" is
+> gone, and Simple mode was removed.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
@@ -32,7 +32,7 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 - **Flat 2D engraving** — multi-line text and drawings on a plane
 - **STL & STEP/STP import** — load meshes or CAD solids directly (solids are tessellated and scaled to mm)
 - **Verify before iron** — 3D backplot, a feed/units check, and a deviation-colored material-removal simulator with a machining-time estimate
-- **Posts:** grblHAL, GRBL (3018 / 3040), LinuxCNC · **mm / inch** output
+- **Posts:** grblHAL, GRBL (3018 / 3040), LinuxCNC, Mach3 / Mach4, Centroid, MASSO (experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
 - **Portable** — Python and every dependency bundled; nothing to install
 
 ## Editions
