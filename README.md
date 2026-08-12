@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.4-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.5-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,12 +11,15 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.4:** **custom post-processors** — drop a `.py` file in `~/.rotatocam/posts/`
-> (**Settings → Open custom posts folder…**) to add your own controller, no rebuild needed; it shows
-> up in the Controller dropdown as "&lt;name&gt; (custom)". The folder is seeded with a README and a
-> minimal example. Plus a built-in **MASSO** post (experimental). *(And from 0.69.2.223.3: the free
-> 4-axis strategies now generate in every case — a Simple-mode bug that mislabeled them "Pro" is
-> gone, and Simple mode was removed.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.5:** **long stock is no longer blocked** — the Length field used to stop
+> at 19.685 in (500 mm), so a baseball bat or a pool cue simply could not be entered; stock and bar
+> lengths now go to 20 m. And a **rotary feed fix**: with a **Max feed** set, every `G93` inverse-time
+> block was being clamped to that same number, so each move took the same time regardless of length
+> and finishing spirals crawled. Inverse-time feeds are now bounded per block by the move's own
+> length, so your Max feed is honoured as a real linear limit. *(From 0.69.2.223.4: drop-in custom
+> post-processors in `~/.rotatocam/posts/`, an experimental MASSO post, and "Position along bar" now
+> moves the part in the preview.)* Bug reports welcome at **therealrevjmoney@gmail.com** — both of
+> the above came from users.
 
 ## Download
 
