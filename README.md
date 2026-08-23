@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.9-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.10-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,19 +11,23 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.9:** **the simulator stopped inventing damage that was never cut.** A height
-> field stores one surface per ray, so when a ball clips the corner of a steep wall the only answer
-> it can give is to drop the whole ray, and a run of small honest clips piled up into a gouge
-> nothing ever made: 15.09 mm reported on a part where the cutter was measured 1.478 mm into the
-> solid. Separately, cutting right at the rotary centreline left single rays behind untouched,
-> which drew as bright stripes across a finished nose. Both are fixed, and the deviation colouring
-> on the part now uses the same test as the printed numbers, so a red patch and the report can no
-> longer disagree. **The toolpaths got more accurate too, at the same speed:** the drop cutter
-> spreads its sample rays on a golden-angle spiral instead of concentric rings, closing the blind
-> spot the old pattern left in the middle of the tool. Same ray count, and the worst measured
-> overcut on a stepped test part falls from 1.61 mm to 1.06 mm. *(From 0.69.2.223.5: stock and bar
-> lengths up to 20 m, and the `G93` inverse-time feed fix.)* Bug reports welcome at
-> **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.10:** **the stock is what it plans against now, not the model.** Every
+> pass used to be worked out by dropping the cutter onto the part surface and following it, which
+> means nothing in the program knew what material was actually standing there. So roughing began at
+> the bar's original OD instead of at the metal that is really left, levels above the part were
+> never visited at all, and a queued second operation started from a fresh blank rather than from
+> what the first one had already taken off. The stock is now carried as a real height field with
+> the model subtracted from inside it, and what is left between the two is waste for a pass to
+> remove. **That also means a smaller follow-up tool re-cuts the leftover instead of skimming the
+> whole part again**, from a measurement rather than an inference. **And a shape a wrap pass cannot
+> cut now says so before you generate:** a wrap stores one radius per ray out from the rotary axis,
+> so it only describes shapes that are star-shaped about that axis. A column or a camshaft is 100%.
+> A figure with ears and limbs can be 20%, and the rest of it will not appear at *any* setting, so
+> RotatoCAM measures it, names the percentage and points you at the right strategy instead of
+> handing you a program that quietly misses most of the model. *(From 0.69.2.223.9: the simulator
+> stopped inventing damage that was never cut, and the drop cutter's sample rays moved to a
+> golden-angle spiral, taking the worst measured overcut on a stepped test part from 1.61 mm to
+> 1.06 mm at the same ray count.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
