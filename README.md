@@ -1,7 +1,7 @@
 # RotatoCAM — Free 4-Axis Rotary CAM & G-code Generator for DIY CNC
 
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
-A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · LinuxCNC**. Free Community Edition for Windows.
+A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
 
 ![Version](https://img.shields.io/badge/version-0.69.2.223.10-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
@@ -11,23 +11,16 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.10:** **the stock is what it plans against now, not the model.** Every
-> pass used to be worked out by dropping the cutter onto the part surface and following it, which
-> means nothing in the program knew what material was actually standing there. So roughing began at
-> the bar's original OD instead of at the metal that is really left, levels above the part were
-> never visited at all, and a queued second operation started from a fresh blank rather than from
-> what the first one had already taken off. The stock is now carried as a real height field with
-> the model subtracted from inside it, and what is left between the two is waste for a pass to
-> remove. **That also means a smaller follow-up tool re-cuts the leftover instead of skimming the
-> whole part again**, from a measurement rather than an inference. **And a shape a wrap pass cannot
-> cut now says so before you generate:** a wrap stores one radius per ray out from the rotary axis,
-> so it only describes shapes that are star-shaped about that axis. A column or a camshaft is 100%.
-> A figure with ears and limbs can be 20%, and the rest of it will not appear at *any* setting, so
-> RotatoCAM measures it, names the percentage and points you at the right strategy instead of
-> handing you a program that quietly misses most of the model. *(From 0.69.2.223.9: the simulator
-> stopped inventing damage that was never cut, and the drop cutter's sample rays moved to a
-> golden-angle spiral, taking the worst measured overcut on a stepped test part from 1.61 mm to
-> 1.06 mm at the same ray count.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.10:** **it plans against the stock now, not just the model.** Roughing
+> starts at the material that is actually left rather than the bar's original OD, so the empty
+> passes above it are gone. A queued second operation begins from what the first one really took
+> off, so a smaller follow-up tool re-cuts the leftover instead of skimming the whole part again.
+> Retracts clear the stock rather than the model. RotatoCAM also warns you up front when a wrapped
+> pass cannot reach a shape, instead of quietly handing you a program that misses most of it, and
+> box stock on the rotary is simulated at the right size. Expect programs to run longer: they are
+> removing material the old ones walked past. *(From 0.69.2.223.9: the simulator stopped reporting
+> damage that was never cut, and toolpath accuracy improved at no cost in speed.)* Bug reports
+> welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
@@ -43,7 +36,7 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 - **Flat 2D engraving** — multi-line text and drawings on a plane
 - **STL & STEP/STP import** — load meshes or CAD solids directly (solids are tessellated and scaled to mm)
 - **Verify before iron** — 3D backplot, a feed/units check, and a deviation-colored material-removal simulator with a machining-time estimate
-- **Posts:** grblHAL, GRBL (3018 / 3040), LinuxCNC, Mach3 / Mach4, Centroid, MASSO (experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
+- **Posts:** grblHAL, GRBL (3018 / 3040), **Genmitsu / SainSmart** (4040-PRO, 3030 PROVer MAX — grbl 1.1f with a real 4th axis), LinuxCNC, Mach3 / Mach4, Centroid (Acorn / Oak), MASSO G2/G3 (experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
 - **Portable** — Python and every dependency bundled; nothing to install
 
 ## Editions
