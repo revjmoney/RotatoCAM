@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · AtomStack · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.12-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.13-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,33 +11,29 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.12:** **the simulator no longer eats the part when the cutter works near
-> the rotary axis** — a 3+1 job on a part with openings on the centreline could come out of the sim
-> as a thin pin down the middle while the G-code was correct the whole time, which is the worst way
-> for it to fail because it makes a good program look ruined. **Tapered cutters are now planned as
-> the shape they are:** a fine-tipped taper used to be treated as a blunt disc of its full shank
-> diameter, so any detail narrower than the shank was unreachable at every setting. Choose *taper*
-> as the tool type, give it an included angle and a tip diameter (or a corner radius for a tapered
-> ball nose), and pass spacing solves your scallop against the real cutter profile. Also: **the
-> AtomStack C4 Pro is supported**, with its rotary treated as a
-> real fourth axis in plain degrees rather than a substituted Y or a circumference conversion.
-> Absolute angles past a full turn are preserved, so a continuous spiral keeps counting up instead
-> of resetting every revolution. Built from a live-machine handoff by a C4 Pro owner who read his
-> own controller rather than the documentation, and marked experimental until somebody has cut with
-> it. **There is also a French option** for the two places where a misunderstanding is expensive:
-> the safety gate and the getting-started guide, under Settings ▸ Language. The menus and parameter
-> names stay in English on purpose — renaming a menu the reader can still see in English just sends
-> them hunting for something that is not there. **The bundled example projects open now:** nine
-> models and thirty-odd ready-to-run job sheets have been inside every download all along, but the
-> portable build looked for them one folder too high and reported them missing, and the offline user
-> guide, the window icon and the startup splash were absent for the same reason. **A square billet
-> is now checked as a square
-> billet:** the does-it-fit warning compares your part against the block's Y and Z one axis at a
-> time and tells you which one is short and by how much, instead of asking whether the part cleared
-> the circle a rotating bar's corners sweep. *(From 0.69.2.223.10: it plans against the stock
-> now rather than just the model, so roughing starts at the material actually left, a queued second
-> operation begins from what the first one really took off, and you are told up front when a
-> wrapped pass cannot reach a shape.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.13:** **a rotary mounted along Y now works.** The chuck used to have to run
+> along X, because that is the convention the whole geometry layer is built on. It still is: the new
+> **Rotary runs along** setting maps the finished program on the way out instead, rotating it a
+> quarter turn so the part's length is emitted on Y and its cross-section on X, with Z and the
+> rotary word untouched. It is a true rotation rather than an axis swap, so nothing is mirrored and
+> the program cuts exactly what the simulator showed. A flat engrave is unaffected either way, and
+> the out-of-travel warning now names the axis the motion actually lands on. Experimental, so
+> air-cut it. **Which axis the rotary runs along and which letter it answers to are separate
+> questions**, and are now separate settings — a Y-mounted rotary is still usually called A. Also:
+> **the app now tells the update feed which version it is**, so a release can be measured by how
+> many copies really moved to it. That is the version string and nothing else: no machine id, no
+> serial, no name. *(From 0.69.2.223.12: **the simulator no longer eats the part when the cutter
+> works near the rotary axis** — a 3+1 job on a part with openings on the centreline could come out
+> of the sim as a thin pin down the middle while the G-code was correct the whole time. **Tapered
+> cutters are planned as the shape they are** — choose *taper* as the tool type, give it an included
+> angle and a tip diameter, or a corner radius for a tapered ball nose, and pass spacing solves your
+> scallop against the real cutter profile. **The AtomStack C4 Pro is supported**, its rotary treated
+> as a real fourth axis in plain degrees rather than a substituted Y, with absolute angles past a
+> full turn preserved. **There is a French option** for the safety gate and the getting-started
+> guide, under Settings ▸ Language. **The bundled example projects open** — nine models and
+> eighteen ready-to-run job sheets were inside every download all along, but the portable build
+> looked for them one folder too high. And **a square billet is checked as a square billet**, on Y
+> and Z one axis at a time.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
