@@ -1,9 +1,9 @@
 # RotatoCAM — Free 4-Axis Rotary CAM & G-code Generator for DIY CNC
 
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
-A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · AtomStack · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
+A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · AtomStack · HolzProfi HC-204A · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.13-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.15-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,18 +11,36 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.13:** **a rotary mounted along Y now works.** The chuck used to have to run
-> along X, because that is the convention the whole geometry layer is built on. It still is: the new
-> **Rotary runs along** setting maps the finished program on the way out instead, rotating it a
-> quarter turn so the part's length is emitted on Y and its cross-section on X, with Z and the
-> rotary word untouched. It is a true rotation rather than an axis swap, so nothing is mirrored and
-> the program cuts exactly what the simulator showed. A flat engrave is unaffected either way, and
-> the out-of-travel warning now names the axis the motion actually lands on. Experimental, so
-> air-cut it. **Which axis the rotary runs along and which letter it answers to are separate
-> questions**, and are now separate settings — a Y-mounted rotary is still usually called A. Also:
-> **the app now tells the update feed which version it is**, so a release can be measured by how
-> many copies really moved to it. That is the version string and nothing else: no machine id, no
-> serial, no name. *(From 0.69.2.223.12: **the simulator no longer eats the part when the cutter
+> 🆕 **New in 0.69.2.223.15:** **An accurate rotary drop cutter for every wrapped strategy.**
+> Each rotation angle now casts a dense lateral band of rays reduced through the tool's true
+> profile: on the ball-on-sphere closed form the error drops from ~0.15 mm into the hundredths,
+> and a tapered cutter rests on its actual cone instead of being planned as its shank. Cut radii
+> move slightly outward, never inward. **Roughing leaves its allowance perpendicular to the
+> part**, so 0.5 mm on a shoulder is 0.5 mm, not 0.36. **The sim playback stopped lying twice
+> over:** the on-screen cutter now rides the cut surface instead of orbiting through the billet
+> as the chuck turns, and tracks the real machine Y across a clocked 3+1 face. **One Path switch
+> now governs every toolpath line in the app** — lit means lines on screen, off means a clean
+> cutter-and-material view, instantly both ways. **The log panel can be hidden** from Settings.
+> *(From 0.69.2.223.14: Safe Z became a clearance above the STOCK SURFACE — it used to be measured
+> from the rotary axis, so on a part of any size the number was nonsense: set 10 mm on a part with a
+> 14 mm radius and your retract was 4 mm *inside* the material. It is now a clearance **above the
+> stock surface** — type 10 and the tool pulls up 10 mm clear of the work, and the exported file says
+> `Z10` too. The change can only ever raise a retract, never lower one. **Header comments a
+> controller can actually parse:** the lines at the top of the program ran past grbl's 80-character
+> line buffer and, on posts whose name contained brackets, put brackets inside brackets, which ends
+> a comment early so the rest of the line is read as G-code. A dry run reported
+> `error:11, error:2, error:11, error:2` and never got past the header. Fixed for every post at once.
+> **A new install now opens in the plain light theme**, looking like an ordinary desktop application;
+> the dark, CRT green and amber themes are all still under Settings. **Mill / Laser / Plasma moved to
+> Settings ▸ Machine mode**, behind a confirmation, because it sat next to Controller and one stray
+> click silently hid every rotary strategy including 3+1. **Feeds for tapered and V cutters were far
+> too fast** — chip load was sized off the shank rather than the tip that is actually cutting. Plus
+> a **HolzProfi CNC6090 / HC-204A post**, a rotary-letter picker that greys out when the controller
+> only speaks one letter, and an **opt-in out-of-travel check** that stays silent until you tell it
+> where your work zero is. From 0.69.2.223.13: **a rotary mounted along Y now works** — the new
+> Rotary runs along setting rotates the emitted program a quarter turn so the part's length comes out
+> on Y, a true rotation rather than an axis swap, so nothing is mirrored. And **the app tells the
+> update feed which version it is**, the version string and nothing else. From 0.69.2.223.12: **the simulator no longer eats the part when the cutter
 > works near the rotary axis** — a 3+1 job on a part with openings on the centreline could come out
 > of the sim as a thin pin down the middle while the G-code was correct the whole time. **Tapered
 > cutters are planned as the shape they are** — choose *taper* as the tool type, give it an included
@@ -49,7 +67,7 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 - **Flat 2D engraving** — multi-line text and drawings on a plane
 - **STL & STEP/STP import** — load meshes or CAD solids directly (solids are tessellated and scaled to mm)
 - **Verify before iron** — 3D backplot, a feed/units check, and a deviation-colored material-removal simulator with a machining-time estimate
-- **Posts:** grblHAL, GRBL (3018 / 3040), **Genmitsu / SainSmart** (4040-PRO, 3030 PROVer MAX — grbl 1.1f with a real 4th axis), **AtomStack C4 Pro** (native A axis in degrees, experimental), LinuxCNC, Mach3 / Mach4, Centroid (Acorn / Oak), MASSO G2/G3 (experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
+- **Posts:** grblHAL, GRBL (3018 / 3040), **Genmitsu / SainSmart** (4040-PRO, 3030 PROVer MAX — grbl 1.1f with a real 4th axis), **AtomStack C4 Pro** (native A axis in degrees, experimental), **HolzProfi CNC6090 / HC-204A** (4-axis linkage, rotary about machine Y, experimental), LinuxCNC, Mach3 / Mach4, Centroid (Acorn / Oak), MASSO G2/G3 (experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
 - **Portable** — Python and every dependency bundled; nothing to install
 
 ## Editions
