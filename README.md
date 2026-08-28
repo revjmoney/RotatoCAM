@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · AtomStack · HolzProfi HC-204A · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.15-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.16-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,7 +11,18 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.15:** **An accurate rotary drop cutter for every wrapped strategy.**
+> 🆕 **New in 0.69.2.223.16: Makera Carvera support.** A native post for the whole Carvera
+> family (C1 / Air / Z1) plus built-in machine presets: pick your model in Machine setup and the
+> travels, swing radius, chuck figures, feed cap and the right controller are filled in for you.
+> The post follows the Carvera Community Profiles conventions (Smoothieware dialect, parenthesised
+> comments, G94 linear + G93 inverse-time rotary, G28 + M30 ending), pins the rotary letter to A
+> (the firmware errors on B or C, so RotatoCAM never emits them), and saves programs as **.cnc**.
+> Contributed as a community handoff by a Carvera owner - thank you, ExaltedRaddix. ⚠ Not yet
+> verified by cutting on a Carvera: air-cut your first program. Also in this release: the export
+> extension now follows the controller (.ngc for LinuxCNC), and 3+1 indexed work survives model
+> slices that the mesh library refuses to repair (organic / AI-exported meshes) instead of failing
+> the whole Generate.
+> *(From 0.69.2.223.15: An accurate rotary drop cutter for every wrapped strategy.
 > Each rotation angle now casts a dense lateral band of rays reduced through the tool's true
 > profile: on the ball-on-sphere closed form the error drops from ~0.15 mm into the hundredths,
 > and a tapered cutter rests on its actual cone instead of being planned as its shank. Cut radii
