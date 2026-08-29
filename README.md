@@ -3,7 +3,7 @@
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
 A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · AtomStack · HolzProfi HC-204A · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.16-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.17-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,7 +11,13 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.16: Makera Carvera support.** A native post for the whole Carvera
+> 🆕 **New in 0.69.2.223.17: a 3+1 safety fix, and Makera Carvera support.** The indexed
+> 3+1 strategies protected the part with cross-sections sampled at each cutting depth - and a
+> feature living entirely BETWEEN two depths (an impeller blade's curved top) was invisible to
+> that, so the cutter could sweep under it at full depth. Found on a customer's part, measured
+> at a full tool radius of intrusion, and fixed at the root: the keep-out is now a ray-cast
+> height field asked everywhere, and the coverage self-check enforces its documented bound.
+> If you cut sculpted or organic parts in 3+1, take this update. **Makera Carvera support:** A native post for the whole Carvera
 > family (C1 / Air / Z1) plus built-in machine presets: pick your model in Machine setup and the
 > travels, swing radius, chuck figures, feed cap and the right controller are filled in for you.
 > The post follows the Carvera Community Profiles conventions (Smoothieware dialect, parenthesised
