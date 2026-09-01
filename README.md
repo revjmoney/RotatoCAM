@@ -11,64 +11,7 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.17: a 3+1 safety fix, and Makera Carvera support.** The indexed
-> 3+1 strategies protected the part with cross-sections sampled at each cutting depth - and a
-> feature living entirely BETWEEN two depths (an impeller blade's curved top) was invisible to
-> that, so the cutter could sweep under it at full depth. Found on a customer's part, measured
-> at a full tool radius of intrusion, and fixed at the root: the keep-out is now a ray-cast
-> height field asked everywhere, and the coverage self-check enforces its documented bound.
-> If you cut sculpted or organic parts in 3+1, take this update. **Makera Carvera support:** A native post for the whole Carvera
-> family (C1 / Air / Z1) plus built-in machine presets: pick your model in Machine setup and the
-> travels, swing radius, chuck figures, feed cap and the right controller are filled in for you.
-> The post follows the Carvera Community Profiles conventions (Smoothieware dialect, parenthesised
-> comments, G94 linear + G93 inverse-time rotary, G28 + M30 ending), pins the rotary letter to A
-> (the firmware errors on B or C, so RotatoCAM never emits them), and saves programs as **.cnc**.
-> Contributed as a community handoff by a Carvera owner - thank you, ExaltedRaddix. ⚠ Not yet
-> verified by cutting on a Carvera: air-cut your first program. Also in this release: the export
-> extension now follows the controller (.ngc for LinuxCNC), and 3+1 indexed work survives model
-> slices that the mesh library refuses to repair (organic / AI-exported meshes) instead of failing
-> the whole Generate.
-> *(From 0.69.2.223.15: An accurate rotary drop cutter for every wrapped strategy.
-> Each rotation angle now casts a dense lateral band of rays reduced through the tool's true
-> profile: on the ball-on-sphere closed form the error drops from ~0.15 mm into the hundredths,
-> and a tapered cutter rests on its actual cone instead of being planned as its shank. Cut radii
-> move slightly outward, never inward. **Roughing leaves its allowance perpendicular to the
-> part**, so 0.5 mm on a shoulder is 0.5 mm, not 0.36. **The sim playback stopped lying twice
-> over:** the on-screen cutter now rides the cut surface instead of orbiting through the billet
-> as the chuck turns, and tracks the real machine Y across a clocked 3+1 face. **One Path switch
-> now governs every toolpath line in the app** — lit means lines on screen, off means a clean
-> cutter-and-material view, instantly both ways. **The log panel can be hidden** from Settings.
-> *(From 0.69.2.223.14: Safe Z became a clearance above the STOCK SURFACE — it used to be measured
-> from the rotary axis, so on a part of any size the number was nonsense: set 10 mm on a part with a
-> 14 mm radius and your retract was 4 mm *inside* the material. It is now a clearance **above the
-> stock surface** — type 10 and the tool pulls up 10 mm clear of the work, and the exported file says
-> `Z10` too. The change can only ever raise a retract, never lower one. **Header comments a
-> controller can actually parse:** the lines at the top of the program ran past grbl's 80-character
-> line buffer and, on posts whose name contained brackets, put brackets inside brackets, which ends
-> a comment early so the rest of the line is read as G-code. A dry run reported
-> `error:11, error:2, error:11, error:2` and never got past the header. Fixed for every post at once.
-> **A new install now opens in the plain light theme**, looking like an ordinary desktop application;
-> the dark, CRT green and amber themes are all still under Settings. **Mill / Laser / Plasma moved to
-> Settings ▸ Machine mode**, behind a confirmation, because it sat next to Controller and one stray
-> click silently hid every rotary strategy including 3+1. **Feeds for tapered and V cutters were far
-> too fast** — chip load was sized off the shank rather than the tip that is actually cutting. Plus
-> a **HolzProfi CNC6090 / HC-204A post**, a rotary-letter picker that greys out when the controller
-> only speaks one letter, and an **opt-in out-of-travel check** that stays silent until you tell it
-> where your work zero is. From 0.69.2.223.13: **a rotary mounted along Y now works** — the new
-> Rotary runs along setting rotates the emitted program a quarter turn so the part's length comes out
-> on Y, a true rotation rather than an axis swap, so nothing is mirrored. And **the app tells the
-> update feed which version it is**, the version string and nothing else. From 0.69.2.223.12: **the simulator no longer eats the part when the cutter
-> works near the rotary axis** — a 3+1 job on a part with openings on the centreline could come out
-> of the sim as a thin pin down the middle while the G-code was correct the whole time. **Tapered
-> cutters are planned as the shape they are** — choose *taper* as the tool type, give it an included
-> angle and a tip diameter, or a corner radius for a tapered ball nose, and pass spacing solves your
-> scallop against the real cutter profile. **The AtomStack C4 Pro is supported**, its rotary treated
-> as a real fourth axis in plain degrees rather than a substituted Y, with absolute angles past a
-> full turn preserved. **There is a French option** for the safety gate and the getting-started
-> guide, under Settings ▸ Language. **The bundled example projects open** — nine models and
-> eighteen ready-to-run job sheets were inside every download all along, but the portable build
-> looked for them one folder too high. And **a square billet is checked as a square billet**, on Y
-> and Z one axis at a time.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.17: a 3+1 safety fix, and Makera Carvera support.**  Bug reports welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
