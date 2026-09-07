@@ -1,9 +1,9 @@
 # RotatoCAM — Free 4-Axis Rotary CAM & G-code Generator for DIY CNC
 
 **Turn an STL or STEP into simultaneous 4-axis rotary G-code — without an expensive CAM subscription.**
-A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · AtomStack · HolzProfi HC-204A · LinuxCNC · Mach3/Mach4 · Centroid · MASSO** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
+A from-scratch CAM program for hobby machinists with a rotary (4th) axis, running **grblHAL · GRBL · Genmitsu · FluidNC · AtomStack · HolzProfi HC-204A · Makera Carvera · LinuxCNC · Mach3/Mach4 · Centroid · MASSO · RosettaCNC** — plus drop-in custom posts for anything else. Free Community Edition for Windows.
 
-![Version](https://img.shields.io/badge/version-0.69.2.223.17-ffb000)
+![Version](https://img.shields.io/badge/version-0.69.2.223.18-ffb000)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -11,7 +11,77 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 
 > ⚠️ **EXPERIMENTAL — read this before you cut.** RotatoCAM only *writes* a G-code file; it does **not** run your machine, and its output is only a **suggestion you must verify**. CNC mills, lasers and plasma cutters are dangerous. **You alone are responsible** for inspecting every program, air-cutting first, and operating safely. Provided **AS-IS, with no warranty**.
 
-> 🆕 **New in 0.69.2.223.17: a 3+1 safety fix, and Makera Carvera support.**  Bug reports welcome at **therealrevjmoney@gmail.com**.
+> 🆕 **New in 0.69.2.223.18: safe rapids everywhere, a chuck support guard, and two new
+> controllers.** A customer's video caught a rapid crossing uncut stock on its way to the next
+> cut: legal at both endpoints, wrong in the middle. Every posted program now raises Z to Safe
+> height first, travels high, and plunges last, on every controller, for every rapid. Programs
+> that already retracted before hopping come out byte-identical. **Safe Z over a square billet
+> clears its spinning corners:** retracts used to be figured from the model inside the blank,
+> which could put a "safe" height inside an oversized block; they now clear the corner the
+> billet actually sweeps. **Simultaneous rotary moves are never simplified into different
+> moves:** point reduction at export could replace two safe combined X/rotary sweeps with one
+> chord that dips; blended runs now keep their exact points. **Chuck support guard:** give it
+> a length and a core diameter in Stock setup and cutting near the chuck is held out to a
+> support nub you part off after the job, shown honestly in the sim and the backplot.
+> **FluidNC and RosettaCNC get named posts** (both prototyped with customers running them,
+> both experimental: air-cut first). FluidNC is grbl-flavoured with G93 rotary and Z-first
+> rapids; RosettaCNC is Fanuc-flavoured RS-274 whose post pins RTCP off with G49, because
+> RotatoCAM output is already fully resolved machine motion. **Bought Pro while running this
+> free edition?** Help now walks you to your account downloads page, offline activation
+> explains its two-step process, and both note that EXPERIMENTAL in the title bar is the beta
+> label in every edition, licensed or not.
+> *(From 0.69.2.223.17: a 3+1 safety fix and Makera Carvera support. The indexed 3+1
+> strategies protected the part with cross-sections sampled at each cutting depth - and a
+> feature living entirely BETWEEN two depths, like an impeller blade's curved top, was
+> invisible to that, so the cutter could sweep under it at full depth. Found on a customer's
+> part, measured at a full tool radius of intrusion, fixed at the root: the keep-out is now a
+> ray-cast height field asked everywhere. If you cut sculpted or organic parts in 3+1, take
+> this update. Makera Carvera: a native post for the whole family (C1 / Air / Z1) plus machine
+> presets, following the Carvera Community Profiles conventions, rotary letter pinned to A,
+> programs saved as .cnc - contributed as a community handoff, thank you ExaltedRaddix. Plus:
+> export extension follows the controller (.ngc for LinuxCNC), and 3+1 work survives model
+> slices the mesh library refuses to repair.)*
+> *(From 0.69.2.223.15: An accurate rotary drop cutter for every wrapped strategy.
+> Each rotation angle now casts a dense lateral band of rays reduced through the tool's true
+> profile: on the ball-on-sphere closed form the error drops from ~0.15 mm into the hundredths,
+> and a tapered cutter rests on its actual cone instead of being planned as its shank. Cut radii
+> move slightly outward, never inward. **Roughing leaves its allowance perpendicular to the
+> part**, so 0.5 mm on a shoulder is 0.5 mm, not 0.36. **The sim playback stopped lying twice
+> over:** the on-screen cutter now rides the cut surface instead of orbiting through the billet
+> as the chuck turns, and tracks the real machine Y across a clocked 3+1 face. **One Path switch
+> now governs every toolpath line in the app** — lit means lines on screen, off means a clean
+> cutter-and-material view, instantly both ways. **The log panel can be hidden** from Settings.
+> *(From 0.69.2.223.14: Safe Z became a clearance above the STOCK SURFACE — it used to be measured
+> from the rotary axis, so on a part of any size the number was nonsense: set 10 mm on a part with a
+> 14 mm radius and your retract was 4 mm *inside* the material. It is now a clearance **above the
+> stock surface** — type 10 and the tool pulls up 10 mm clear of the work, and the exported file says
+> `Z10` too. The change can only ever raise a retract, never lower one. **Header comments a
+> controller can actually parse:** the lines at the top of the program ran past grbl's 80-character
+> line buffer and, on posts whose name contained brackets, put brackets inside brackets, which ends
+> a comment early so the rest of the line is read as G-code. A dry run reported
+> `error:11, error:2, error:11, error:2` and never got past the header. Fixed for every post at once.
+> **A new install now opens in the plain light theme**, looking like an ordinary desktop application;
+> the dark, CRT green and amber themes are all still under Settings. **Mill / Laser / Plasma moved to
+> Settings ▸ Machine mode**, behind a confirmation, because it sat next to Controller and one stray
+> click silently hid every rotary strategy including 3+1. **Feeds for tapered and V cutters were far
+> too fast** — chip load was sized off the shank rather than the tip that is actually cutting. Plus
+> a **HolzProfi CNC6090 / HC-204A post**, a rotary-letter picker that greys out when the controller
+> only speaks one letter, and an **opt-in out-of-travel check** that stays silent until you tell it
+> where your work zero is. From 0.69.2.223.13: **a rotary mounted along Y now works** — the new
+> Rotary runs along setting rotates the emitted program a quarter turn so the part's length comes out
+> on Y, a true rotation rather than an axis swap, so nothing is mirrored. And **the app tells the
+> update feed which version it is**, the version string and nothing else. From 0.69.2.223.12: **the simulator no longer eats the part when the cutter
+> works near the rotary axis** — a 3+1 job on a part with openings on the centreline could come out
+> of the sim as a thin pin down the middle while the G-code was correct the whole time. **Tapered
+> cutters are planned as the shape they are** — choose *taper* as the tool type, give it an included
+> angle and a tip diameter, or a corner radius for a tapered ball nose, and pass spacing solves your
+> scallop against the real cutter profile. **The AtomStack C4 Pro is supported**, its rotary treated
+> as a real fourth axis in plain degrees rather than a substituted Y, with absolute angles past a
+> full turn preserved. **There is a French option** for the safety gate and the getting-started
+> guide, under Settings ▸ Language. **The bundled example projects open** — nine models and
+> eighteen ready-to-run job sheets were inside every download all along, but the portable build
+> looked for them one folder too high. And **a square billet is checked as a square billet**, on Y
+> and Z one axis at a time.)* Bug reports welcome at **therealrevjmoney@gmail.com**.
 
 ## Download
 
@@ -27,7 +97,7 @@ Lay a model in the chuck and get **continuous simultaneous X+C+Z** roughing and 
 - **Flat 2D engraving** — multi-line text and drawings on a plane
 - **STL & STEP/STP import** — load meshes or CAD solids directly (solids are tessellated and scaled to mm)
 - **Verify before iron** — 3D backplot, a feed/units check, and a deviation-colored material-removal simulator with a machining-time estimate
-- **Posts:** grblHAL, GRBL (3018 / 3040), **Genmitsu / SainSmart** (4040-PRO, 3030 PROVer MAX — grbl 1.1f with a real 4th axis), **AtomStack C4 Pro** (native A axis in degrees, experimental), **HolzProfi CNC6090 / HC-204A** (4-axis linkage, rotary about machine Y, experimental), LinuxCNC, Mach3 / Mach4, Centroid (Acorn / Oak), MASSO G2/G3 (experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
+- **Posts:** grblHAL, GRBL (3018 / 3040), **Genmitsu / SainSmart** (4040-PRO, 3030 PROVer MAX — grbl 1.1f with a real 4th axis), **FluidNC** (ESP32, Z-first rapids, experimental), **AtomStack C4 Pro** (native A axis in degrees, experimental), **HolzProfi CNC6090 / HC-204A** (4-axis linkage, rotary about machine Y, experimental), **Makera Carvera** (C1 / Air / Z1, experimental), LinuxCNC, Mach3 / Mach4, Centroid (Acorn / Oak), MASSO G2/G3 (experimental), **RosettaCNC** (RTCP off, experimental) — plus **drop-in custom posts** (add your own controller from a folder, no rebuild) · **mm / inch** output
 - **Portable** — Python and every dependency bundled; nothing to install
 
 ## Editions
