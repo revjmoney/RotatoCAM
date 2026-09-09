@@ -16,11 +16,11 @@ simulation on Windows, without a CAM subscription.
 
 ## Download
 
-Grab the free Community Edition from [**Releases**](../../releases). Unzip and run: no
-install, no license, no expiry.
+Grab the free Community Edition at **[rotatocam.com](https://rotatocam.com/#download)**.
+Unzip and run: no install, no license, no expiry.
 
-Everything else lives at **https://rotatocam.com/** — what it does, the how-to, the
-gallery, the safe-testing guide, supported controllers, and RotatoCAM Pro.
+Everything else lives there too: what it does, the how-to, the gallery, the safe-testing
+guide, supported controllers, and RotatoCAM Pro.
 
 ---
 
