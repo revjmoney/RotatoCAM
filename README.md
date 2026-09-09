@@ -2,7 +2,7 @@
 
 **Spin the stock. Read the signal.**
 
-Free 4-axis rotary CAM and G-code generator for DIY CNC. Turn an STL or STEP into
+Free (and pro version) 4-axis rotary CAM and G-code generator for DIY CNC. Turn an STL or STEP into
 simultaneous 4-axis rotary toolpaths, wrapped engraving, and a verified material-removal
 simulation on Windows, without a CAM subscription.
 
