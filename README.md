@@ -4,8 +4,9 @@
 
 Free 4-axis rotary CAM and G-code generator for DIY CNC. Turn an STL or STEP into
 simultaneous 4-axis rotary toolpaths, wrapped engraving, and a verified material-removal
-simulation on Windows, without a CAM subscription.
+simulation on Windows, without a CAM subscription. Now at **1.0**.
 
+![Version](https://img.shields.io/badge/version-1.0-e8b03a)
 ![Price](https://img.shields.io/badge/community%20edition-free-46d17a)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-555)
 
@@ -16,11 +17,11 @@ simulation on Windows, without a CAM subscription.
 
 ## Download
 
-Grab the free Community Edition from [**Releases**](../../releases). Unzip and run: no
-install, no license, no expiry.
+Grab the free Community Edition at **[rotatocam.com](https://rotatocam.com/#download)**.
+Unzip and run: no install, no license, no expiry.
 
-Everything else lives at **https://rotatocam.com/** — what it does, the how-to, the
-gallery, the safe-testing guide, supported controllers, and RotatoCAM Pro.
+Everything else lives there too: what it does, the how-to, the gallery, the safe-testing
+guide, supported controllers, and RotatoCAM Pro.
 
 ---
 
