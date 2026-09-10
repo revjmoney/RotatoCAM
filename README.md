@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/rotatocam-logo.png" alt="RotatoCAM logo" width="128" height="128">
+</p>
+
 # RotatoCAM
 
 **Spin the stock. Read the signal.**
@@ -21,6 +25,26 @@ Unzip and run: no install, no license, no expiry.
 
 Everything else lives there too: what it does, the how-to, the gallery, the safe-testing
 guide, supported controllers, and RotatoCAM Pro.
+
+## Screenshots
+
+### Pikachu rotary simulation
+
+Material-removal simulation showing the Pikachu model between the remaining stock ends.
+
+![Pikachu rotary material-removal simulation](assets/screenshots/rotatocam-pikachu-sim.png)
+
+### Pawn toolpaths
+
+Rotary toolpath preview with the pawn model and chuck fixture in view.
+
+![Pawn rotary toolpaths and chuck fixture in RotatoCAM](assets/screenshots/rotatocam-pawn-toolpath.png)
+
+### Engraving simulation
+
+Engraving playback with the cutter, toolpath, and G-code readout visible.
+
+![Engraving simulation with toolpath and G-code playback](assets/screenshots/rotatocam-engrave-iso.png)
 
 ---
 
