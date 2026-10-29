@@ -137,6 +137,21 @@ Because some CAM "deals" feel a little like this. A totally fictional undercover
   <sub>Shorts: Undercover with the CAM Cartels · The CAM Smugglers at the Marina · The Laundromat CAM Informant · Monthly CAM Payments at the Motel</sub>
 </p>
 
+The sequel, with masked informants and real (paraphrased) forum testimony:
+
+<p align="center">
+  <a href="https://youtu.be/1W5Boad8drM"><img src="https://img.youtube.com/vi/1W5Boad8drM/maxresdefault.jpg" alt="Watch: UNDERCOVER: The CAM Cartels, The Bake Sale Files" width="560"></a><br>
+  <sub>▶ <a href="https://youtu.be/1W5Boad8drM">🕵️ UNDERCOVER: The CAM Cartels | The Bake Sale Files | Who Rents the Fourth Axis? 💸</a></sub>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/shorts/E6LUWnaVzWk"><img src="https://i.ytimg.com/vi/E6LUWnaVzWk/oar2.jpg" alt="Short: The Blur Box Is Running Late" width="160"></a>
+  <a href="https://www.youtube.com/shorts/YFfopVLbu90"><img src="https://i.ytimg.com/vi/YFfopVLbu90/oar2.jpg" alt="Short: They Rented My Own Wheel Back To Me" width="160"></a>
+  <a href="https://www.youtube.com/shorts/FUVEoW9f6ko"><img src="https://i.ytimg.com/vi/FUVEoW9f6ko/oar2.jpg" alt="Short: Nobody Says The Number" width="160"></a>
+  <br>
+  <sub>Shorts: The Blur Box Is Running Late · They Rented My Own Wheel Back To Me · Nobody Says The Number</sub>
+</p>
+
 <sub>Parody. All characters, companies, and product names in it are made up.</sub>
 
 ## More from the shop
