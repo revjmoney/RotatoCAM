@@ -1,0 +1,46 @@
+# CI: this repo holds docs and media only, so the job here is the private data guard.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    name: Private data guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - name: Scan tracked files for private data
+        env:
+          ALLOWED_IPS: ""
+        run: |
+          fail=0
+          ex=(-- . ':(exclude).github/workflows/ci.yml' ':(exclude)*.png')
+          if git grep -n -I -E 'myemail937|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY' "${ex[@]}"; then
+            echo "::error::A private email, GitHub token or private key is in the tree"
+            fail=1
+          fi
+          if git grep -n -I -i -E 'rose[ _-]?engine|guilloch|gen-rose' "${ex[@]}"; then
+            echo "::error::Private stash material is in the tree"
+            fail=1
+          fi
+          found=$(git grep -h -o -I -E '192\.168\.1\.[0-9]{1,3}' "${ex[@]}" | sort -u || true)
+          for ip in $found; do
+            case " $ALLOWED_IPS " in
+              *" $ip "*) ;;
+              *)
+                git grep -n -I -F "$ip" "${ex[@]}" || true
+                echo "::error::Home network address $ip is in the tree"
+                fail=1
+                ;;
+            esac
+          done
+          if [ "$fail" -ne 0 ]; then exit 1; fi
+          echo "Guard passed: no private data found"
